@@ -10,5 +10,5 @@ La soluciòn fue comentar la linea correspondiente al formato a convertir:
 - sudo nano policy.xml
 
 - y comente la linea:
---<!-- <policy domain="coder" rights="none" pattern="PDF" />-->
+<policy domain="coder" rights="none" pattern="PDF" />
 
