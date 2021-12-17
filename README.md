@@ -9,6 +9,6 @@ La soluciòn fue comentar la linea correspondiente al formato a convertir:
 - cd /etc/ImageImagick-6
 - sudo nano policy.xml
 
-- y comente la linea:
- <code><policy domain="coder" rights="none" pattern="PDF" /></code>
+- y comente la linea donde se encuentre:
+ <code> policy domain="coder" rights="none" pattern="PDF" </code>
 
