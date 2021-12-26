@@ -1,25 +1,27 @@
 package main
 
 import (
+	"fmt"
 	"log"
 
-	"gopkg.in/gographics/imagick.v2/imagick"
+	"gopkg.in/gographics/imagick.v3/imagick"
 )
 
 func main() {
-	pdfName := "dummy.pdf"
-	imageName := "test.jpg"
+	pdfName := "Conceptos Introductorios.pdf"
+	imageName := "conceptos i.jpg"
 
 	if err := ConvertPdfToJpg(pdfName, imageName); err != nil {
 		log.Fatal(err)
 	}
+
+	log.Println("Programa terminado")
 }
 
 // ConvertPdfToJpg will take a filename of a pdf file and convert the file into an
 // image which will be saved back to the same location. It will save the image as a
 // high resolution jpg file with minimal compression.
 func ConvertPdfToJpg(pdfName string, imageName string) error {
-
 	// Setup
 	imagick.Initialize()
 	defer imagick.Terminate()
@@ -38,25 +40,37 @@ func ConvertPdfToJpg(pdfName string, imageName string) error {
 		return err
 	}
 
-	// Must be *after* ReadImageFile
-	// Flatten image and remove alpha channel, to prevent alpha turning black in jpg
-	if err := mw.SetImageAlphaChannel(imagick.ALPHA_CHANNEL_FLATTEN); err != nil {
-		return err
+	log.Println(mw.GetNumberImages())
+	for i := 1; i < int(mw.GetNumberImages()); i++ {
+
+		// Select only first page of pdf
+		mw.SetIteratorIndex(i)
+
+		// Must be *after* ReadImageFile
+		// Flatten image and remove alpha channel, to prevent alpha turning black in jpg
+		if err := mw.SetImageAlphaChannel(imagick.ALPHA_CHANNEL_BACKGROUND); err != nil {
+			return err
+		}
+
+		if err := mw.SetImageCompression(imagick.COMPRESSION_JPEG); err != nil {
+			fmt.Printf("%v", err)
+		}
+
+		// Set any compression (100 = max quality)
+		if err := mw.SetCompressionQuality(80); err != nil {
+			return err
+		}
+
+		// Convert into JPG
+		if err := mw.SetFormat("jpg"); err != nil {
+			return err
+		}
+
+		// Save File
+		imageName = fmt.Sprintf("%d_%s", i, imageName)
+		mw.WriteImage(imageName)
 	}
 
-	// Set any compression (100 = max quality)
-	if err := mw.SetCompressionQuality(95); err != nil {
-		return err
-	}
+	return nil
 
-	// Select only first page of pdf
-	mw.SetIteratorIndex(0)
-
-	// Convert into JPG
-	if err := mw.SetFormat("jpg"); err != nil {
-		return err
-	}
-
-	// Save File
-	return mw.WriteImage(imageName)
 }
