@@ -4,16 +4,22 @@ import (
 	"fmt"
 	"log"
 
+	w "github.com/juanmachuca95/convertidor_webp_go.git/webp"
+
 	"gopkg.in/gographics/imagick.v3/imagick"
 )
 
 func main() {
-	pdfName := "test.pdf"
+	/* pdfName := "test.pdf"
 	imageName := "conceptos.jpg"
 
 	if err := ConvertPdfToJpg(pdfName, imageName); err != nil {
 		log.Fatal(err)
-	}
+	} */
+
+	imageJpeg := "2_1_conceptos.jpg"
+	nameWebp := "2_1_conceptos.webp"
+	w.ConvertToWebp(imageJpeg, nameWebp)
 
 	log.Println("Programa terminado")
 }

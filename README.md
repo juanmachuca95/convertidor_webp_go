@@ -12,3 +12,7 @@ La soluciòn fue comentar la linea correspondiente al formato a convertir:
 - y comente la linea donde se encuentre:
  <code> policy domain="coder" rights="none" pattern="PDF" </code>
 
+
+
+## librería para convertir jpg to webp
+https://github.com/kolesa-team/go-webp
