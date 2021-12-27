@@ -10,12 +10,12 @@ import (
 )
 
 func main() {
-	/* pdfName := "test.pdf"
+	pdfName := "test.pdf"
 	imageName := "conceptos.jpg"
 
 	if err := ConvertPdfToJpg(pdfName, imageName); err != nil {
 		log.Fatal(err)
-	} */
+	}
 
 	imageJpeg := "2_1_conceptos.jpg"
 	nameWebp := "2_1_conceptos.webp"
