@@ -8,8 +8,8 @@ import (
 )
 
 func main() {
-	pdfName := "Conceptos Introductorios.pdf"
-	imageName := "conceptos i.jpg"
+	pdfName := "test.pdf"
+	imageName := "conceptos.jpg"
 
 	if err := ConvertPdfToJpg(pdfName, imageName); err != nil {
 		log.Fatal(err)
@@ -37,6 +37,7 @@ func ConvertPdfToJpg(pdfName string, imageName string) error {
 
 	// Load the image file into imagick
 	if err := mw.ReadImage(pdfName); err != nil {
+		log.Println("error al leer archivo ", err)
 		return err
 	}
 
