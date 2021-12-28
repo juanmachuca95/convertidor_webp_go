@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"log"
 
-	w "github.com/juanmachuca95/convertidor_webp_go.git/webp"
+	w "github.com/juanmachuca95/convertidor_webp_go/webp"
 
-	"gopkg.in/gographics/imagick.v3/imagick"
+	"gopkg.in/gographics/imagick.v2/imagick"
 )
 
 func main() {

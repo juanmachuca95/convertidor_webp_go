@@ -16,3 +16,10 @@ La soluciòn fue comentar la linea correspondiente al formato a convertir:
 
 ## librería para convertir jpg to webp
 https://github.com/kolesa-team/go-webp
+
+
+#### Imagick golang - Instalación - Link: https://gopkg.in/gographics/imagick.v2/imagick
+go get gopkg.in/gographics/imagick.v2/imagick
+
+import "gopkg.in/gographics/imagick.v2/imagick"
+
