@@ -76,6 +76,9 @@ func ConvertPdfToJpg(pdfName string, imageName string) error {
 		// Save File
 		imageName = fmt.Sprintf("%d_%s", i, imageName)
 		mw.WriteImage(imageName)
+
+		nameWebp := fmt.Sprintf("%d.webp", i)
+		w.ConvertToWebp(imageName, nameWebp)
 	}
 
 	return nil
