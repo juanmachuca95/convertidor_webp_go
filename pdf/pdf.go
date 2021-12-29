@@ -12,9 +12,6 @@ import (
 // image which will be saved back to the same location. It will save the image as a
 // high resolution jpg file with minimal compression.
 func ConvertPdfToJpg(pdfName string, imageName string) error {
-	// Setup
-	imagick.Initialize()
-	defer imagick.Terminate()
 
 	mw := imagick.NewMagickWand()
 	defer mw.Destroy()

@@ -13,10 +13,18 @@ func main() {
 	imagick.Initialize()
 	defer imagick.Terminate()
 
+	docName := "test_word.doc"
 	pdfName := "test.pdf"
-	imageName := "conceptos.jpg"
+	docImageName := "doc.jpg"
+	pdfImageName := "pdf.jpg"
 
-	if err := p.ConvertPdfToJpg(pdfName, imageName); err != nil {
+	// Word implementation
+	if err := p.ConvertPdfToJpg(docName, docImageName); err != nil {
+		log.Fatal(err)
+	}
+
+	// PDF implementation
+	if err := p.ConvertPdfToJpg(pdfName, pdfImageName); err != nil {
 		log.Fatal(err)
 	}
 
